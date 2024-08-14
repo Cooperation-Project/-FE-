@@ -2,7 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { authState } from "../../state/authAtom";
-import { burger, cart, heart, logo, magnifyingGlass, map } from "../../assets/images";
+import {
+  burger,
+  cart,
+  heart,
+  logo,
+  magnifyingGlass,
+  map
+} from "../../assets/images";
 
 function Header() {
   const [auth, setAuth] = useRecoilState(authState);
@@ -10,20 +17,19 @@ function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-   
     setAuth({
       isAuthenticated: false,
       token: null,
-      user: null,
+      user: null
     });
     localStorage.removeItem("authToken");
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
     <>
       <header className="bg-white">
-        <div className="container mx-auto max-w-[1050px] mt-1">
+        <div className="container w-1050 mx-auto min-w-1050 flex flex-col relative">
           {/* 상단 회원가입, 로그인, 고객센터 */}
           <div className="flex justify-between items-center mt-2 mb-3">
             <div className="flex-grow"></div>
@@ -133,7 +139,7 @@ function Header() {
                     marginRight: "3rem",
                     borderColor: "#5E0080",
                     borderWidth: "1.8px",
-                    height: "48px",
+                    height: "48px"
                   }}
                 >
                   <input
@@ -153,7 +159,7 @@ function Header() {
                       style={{
                         width: "22px",
                         height: "22px",
-                        marginRight: "12px",
+                        marginRight: "12px"
                       }}
                     />
                   </button>
@@ -189,7 +195,7 @@ function Header() {
         </div>
       </header>
 
-      <nav className="bg-white shadow-sm w-full z-40">
+      <nav className="bg-white shadow-sm z-40 container w-1050 mx-auto min-w-1050 flex flex-col relative">
         <div className="container mx-auto max-w-[1050px]">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">

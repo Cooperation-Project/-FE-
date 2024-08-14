@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <footer className="w-full border-t border-gray-200 pt-8">
+      <footer className="border-t border-gray-200 pt-8 container w-1050 mx-auto min-w-1050 flex flex-col relative">
         <div className="container mx-auto max-w-[1050px]">
           <div className="flex mb-4 justify-between">
             <div role="complementary" className="">
@@ -11,7 +11,7 @@ function Footer() {
                 style={{
                   fontSize: "20px",
                   fontWeight: "bold",
-                  marginBottom: "16px",
+                  marginBottom: "16px"
                 }}
               >
                 고객행복센터
@@ -21,7 +21,7 @@ function Footer() {
                   className="font-semibold"
                   style={{
                     fontSize: "28px",
-                    marginRight: "10px",
+                    marginRight: "10px"
                   }}
                 >
                   1644-1107
@@ -40,7 +40,7 @@ function Footer() {
                       height: "40px",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "center",
+                      justifyContent: "center"
                     }}
                   >
                     <span>카카오톡 문의</span>
@@ -51,7 +51,7 @@ function Footer() {
                     className="block"
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                   >
                     월~토요일 | 오전 7시 - 오후 6시
@@ -59,7 +59,7 @@ function Footer() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className="block"
                   >
@@ -78,7 +78,7 @@ function Footer() {
                       height: "40px",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "center",
+                      justifyContent: "center"
                     }}
                   >
                     <span>1:1 문의</span>
@@ -88,7 +88,7 @@ function Footer() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className="block"
                   >
@@ -97,7 +97,7 @@ function Footer() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className="block"
                   >
@@ -116,7 +116,7 @@ function Footer() {
                       height: "40px",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "center",
+                      justifyContent: "center"
                     }}
                   >
                     <span>대량주문 문의</span>
@@ -126,7 +126,7 @@ function Footer() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className="block"
                   >
@@ -135,7 +135,7 @@ function Footer() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className="block"
                   >
@@ -148,7 +148,7 @@ function Footer() {
                 <span
                   style={{
                     fontSize: "12px",
-                    color: "#999999",
+                    color: "#999999"
                   }}
                 >
                   비회원 문의:{" "}
@@ -156,7 +156,7 @@ function Footer() {
                     href="mailto:help@karlycorp.com"
                     style={{
                       fontSize: "12px",
-                      color: "#999999",
+                      color: "#999999"
                     }}
                     className=""
                   >
@@ -173,7 +173,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     칼리소개
@@ -184,7 +184,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     칼리소개영상
@@ -195,7 +195,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     투자정보
@@ -206,7 +206,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     인재채용
@@ -217,7 +217,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     이용약관
@@ -228,7 +228,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     개인정보처리방침
@@ -239,7 +239,7 @@ function Footer() {
                     href="#"
                     style={{
                       fontSize: "14px",
-                      color: "#333333",
+                      color: "#333333"
                     }}
                   >
                     이용안내
@@ -250,7 +250,7 @@ function Footer() {
               <div
                 style={{
                   fontSize: "12px",
-                  color: "#999999",
+                  color: "#999999"
                 }}
               >
                 <p>
@@ -258,7 +258,7 @@ function Footer() {
                   <span>사업자등록번호 : 261-81-23567</span> |{" "}
                   <span
                     style={{
-                      color: "#5F0080",
+                      color: "#5F0080"
                     }}
                   >
                     <a href="#">사업자정보 확인</a>
@@ -278,7 +278,7 @@ function Footer() {
                     채용문의 :{" "}
                     <a
                       style={{
-                        color: "#5F0080",
+                        color: "#5F0080"
                       }}
                       href="mailto:recruit@karlycorp.com"
                     >
@@ -299,7 +299,7 @@ function Footer() {
           width: "100%",
           backgroundColor: "#F6F7F7",
           color: "#999999", // Tailwind CSS의 text-gray-600 색상 코드
-          fontSize: "12px",
+          fontSize: "12px"
         }}
       >
         <div className="container mx-auto text-center py-4 ">
