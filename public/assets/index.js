@@ -6,3 +6,4 @@ export { default as often } from "./often.svg";
 export { default as oftenClick } from "./oftenClick.svg";
 export { default as orderList } from "./orderList.svg";
 export { default as orderListClick } from "./orderListClick.svg";
+export { default as barLogo } from "./barLogo.ico";
