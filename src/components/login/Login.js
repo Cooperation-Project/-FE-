@@ -42,7 +42,7 @@ function Login() {
             icon: "error",
             title: "인증 실패",
             text: "인증번호를 정확하게 입력해주세요!",
-            confirmButtonText: "확인"
+            confirmButtonText: "확인",
           });
           return;
         }
@@ -51,14 +51,14 @@ function Login() {
       const response = await fetch(API_URL + "/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: userId, password })
+        body: JSON.stringify({ id: userId, password }),
       });
 
       if (!response.ok) {
         throw new Error("로그인 실패!");
       }
 
-      const token = response.headers.get("Token");
+      const token = response.headers.get("token");
 
       if (!token) {
         throw new Error("토큰을 찾을 수 없습니다");
@@ -72,14 +72,14 @@ function Login() {
       setAuth({
         isAuthenticated: true,
         token,
-        user
+        user,
       });
 
       Swal.fire({
         icon: "success",
         title: "로그인 성공",
         text: "로그인에 성공하였습니다!",
-        confirmButtonText: "확인"
+        confirmButtonText: "확인",
       }).then(() => {
         navigate("/");
       });
@@ -91,7 +91,7 @@ function Login() {
         title: "오류",
         text:
           "로그인 중 오류가 발생했습니다. 다시 시도해주세요! " + error.message,
-        confirmButtonText: "확인"
+        confirmButtonText: "확인",
       });
     }
   };

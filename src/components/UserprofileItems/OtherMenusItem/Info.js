@@ -1,68 +1,62 @@
 import React, { useState, useEffect } from "react";
 
+const API_URL = "http://43.202.22.78:8080/";
+
 const Info = () => {
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userNumber, setUserNumber] = useState("");
 
-  useEffect(async () => {
-    //로컬스토리지
-    // const userData = JSON.parse(localStorage.getItem("userData")) || {};
-    // setUserId(userData.userId || "");
-    // setUserName(userData.userName || "");
-    // setUserEmail(userData.userEmail || "");
-    // setUserNumber(userData.userNumber || "");
-
-    //백엔드
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.error("토큰이 없습니다.");
-      return;
-    }
-    try {
-      const response = await fetch("http://43.203.234.84:8080/mypage/info", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.ok) {
-        const userData = await response.json();
-        setUserId(userData.userId || "");
-        setUserName(userData.userName || "");
-        setUserEmail(userData.userEmail || "");
-        setUserNumber(userData.userNumber || "");
-      } else {
-        console.error("userData를 가져오는데 실패했습니다");
-      }
-    } catch (error) {
-      console.error("userData를 가져오는중 에러가 발생했습니다:", error);
-    }
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const updatedUserData = {
-      userId,
-      userName,
-      userEmail,
-      userNumber,
-    };
-
-    //로컬스토리지
-    // localStorage.setItem("userData", JSON.stringify(updatedUserData));
-    // alert("회원 정보가 수정되었습니다.");
-
-    //백엔드
-    try {
-      const token = localStorage.getItem("token");
+  useEffect(() => {
+    const getData = async () => {
+      const token = localStorage.getItem("authToken");
       if (!token) {
         console.error("토큰이 없습니다.");
         return;
       }
 
-      const response = await fetch("http://43.203.234.84:8080/mypage/info", {
+      try {
+        const response = await fetch(`${API_URL}mypage/info`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.ok) {
+          const userData = await response.json();
+          setUserId(userData.id || "");
+          setUserName(userData.name || "");
+          setUserEmail(userData.email || "");
+          setUserNumber(userData.phone_number || "");
+        } else {
+          console.error("userData를 가져오는데 실패했습니다");
+        }
+      } catch (error) {
+        console.error("userData를 가져오는중 에러가 발생했습니다:", error);
+      }
+    };
+
+    getData();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const updatedUserData = {
+      id: userId,
+      name: userName,
+      email: userEmail,
+      phone_number: userNumber,
+    };
+
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        console.error("토큰이 없습니다.");
+        return;
+      }
+
+      const response = await fetch(`${API_URL}mypage/info`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -106,6 +100,7 @@ const Info = () => {
                   type="text"
                   className="text-sm w-full h-[46px] pt-0 pr-[11px] pb-[1px] pl-[15px] rounded border border-solid border-[#dddddd] font-normal text-[#333]"
                   value={userId}
+                  readOnly
                 />
               </div>
               <div className="w-[120px] ml-2" />
@@ -121,6 +116,7 @@ const Info = () => {
                   type="text"
                   className="text-sm w-full h-[46px] pt-0 pr-[11px] pb-[1px] pl-[15px] rounded border border-solid border-[#dddddd] font-normal text-[#333]"
                   value={userName}
+                  readOnly
                 />
               </div>
               <div className="w-[120px] ml-2" />
