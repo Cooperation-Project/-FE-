@@ -1,38 +1,30 @@
 import React, { useState, useEffect } from "react";
 
+const API_URL = "http://43.202.22.78:8080/";
+
 const Address = () => {
   const [addresses, setAddresses] = useState([]);
 
-  //로컬스토리지
-  // useEffect(() => {
-  //   const userData = JSON.parse(localStorage.getItem("userData")) || {
-  //     userAddress: [],
-  //   };
-  //   setAddresses(userData.userAddress);
-  // }, []);
-
-  //백엔드
   useEffect(() => {
     const getData = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("authToken");
       if (!token) {
         console.error("토큰이 없습니다.");
         return;
       }
 
       try {
-        const response = await fetch(
-          "http://43.203.234.84:8080/mypage/address",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${API_URL}mypage/address`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (response.ok) {
           const userData = await response.json();
-          setAddresses(userData.userAddress || []);
+          setAddresses(
+            userData.data.address_list.map((item) => item.address) || []
+          );
         } else {
           console.error("userData를 가져오는데 실패했습니다");
         }
@@ -60,35 +52,28 @@ const Address = () => {
           const newAddresses = [...addresses, fullAddress];
           setAddresses(newAddresses);
 
-          //로컬에 새로 저장
-          // const userData = JSON.parse(localStorage.getItem("userData")) || {};
-          // userData.userAddress = newAddresses;
-          // localStorage.setItem("userData", JSON.stringify(userData));
-
-          //백엔드에 저장
-          const token = localStorage.getItem("token");
+          const token = localStorage.getItem("authToken");
           if (!token) {
             console.error("토큰이 없습니다.");
             return;
           }
           try {
-            const response = await fetch(
-              "http://43.203.234.84:8080/mypage/address",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ address: newAddresses }),
-              }
-            );
+            const response = await fetch(`${API_URL}mypage/address`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                address_list: newAddresses.map((address) => ({ address })),
+              }),
+            });
 
             if (!response.ok) {
               console.error("배송지 저장에 실패했습니다");
             }
           } catch (error) {
-            console.error("배송지 저장중 에러가 발생했습니다.:", error);
+            console.error("배송지 저장 중 에러가 발생했습니다.:", error);
           }
         },
       }).open();
