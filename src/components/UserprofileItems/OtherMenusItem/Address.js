@@ -17,11 +17,12 @@ const Address = () => {
         const response = await fetch(`${API_URL}mypage/address`, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Token: token,
           },
         });
         if (response.ok) {
           const userData = await response.json();
+          console.log(userData);
           setAddresses(
             userData.data.address_list.map((item) => item.address) || []
           );
@@ -62,7 +63,7 @@ const Address = () => {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                Token: token,
               },
               body: JSON.stringify({
                 address_list: newAddresses.map((address) => ({ address })),

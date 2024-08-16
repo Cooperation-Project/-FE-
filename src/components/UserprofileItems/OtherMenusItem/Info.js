@@ -20,15 +20,16 @@ const Info = () => {
         const response = await fetch(`${API_URL}mypage/info`, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Token: token,
           },
         });
         if (response.ok) {
           const userData = await response.json();
-          setUserId(userData.id || "");
-          setUserName(userData.name || "");
-          setUserEmail(userData.email || "");
-          setUserNumber(userData.phone_number || "");
+          console.log(userData);
+          setUserId(userData.data.myId || "");
+          setUserName(userData.data.name || "");
+          setUserEmail(userData.data.email || "");
+          setUserNumber(userData.data.phoneNumber || "");
         } else {
           console.error("userData를 가져오는데 실패했습니다");
         }
@@ -60,14 +61,28 @@ const Info = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Token: token,
         },
         body: JSON.stringify(updatedUserData),
       });
 
       if (response.ok) {
         alert("회원 정보가 수정되었습니다.");
-        // 필요한 경우 로컬 스토리지의 token을 업데이트할 수 있습니다.
+        const updatedResponse = await fetch(`${API_URL}mypage/info`, {
+          method: "GET",
+          headers: {
+            Token: token,
+          },
+        });
+
+        if (updatedResponse.ok) {
+          const newUserData = await updatedResponse.json();
+          console.log("update", newUserData);
+          setUserId(newUserData.data.myId || "");
+          setUserName(newUserData.data.name || "");
+          setUserEmail(newUserData.data.email || "");
+          setUserNumber(newUserData.data.phoneNumber || "");
+        }
       } else {
         alert("회원 정보 수정에 실패했습니다.");
       }
