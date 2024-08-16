@@ -9,7 +9,7 @@ const AddressField = ({ label, name, type, value, handleAddressSearch }) => {
       </div>
       <div className="inline-block">
         {value ? (
-          <div>
+          <div className="flex items-center">
             <input
               className="border border-lightGray focus:outline w-w3 h-h1 pl-3.5 rounded text-base placeholder-middleGray"
               name={name}
@@ -18,15 +18,13 @@ const AddressField = ({ label, name, type, value, handleAddressSearch }) => {
               readOnly
               required
             />
-            <div className="inline-block ml-2">
-              <button
-                type="button"
-                onClick={handleAddressSearch}
-                className="w-w4 h-h2 border font-medium border-purple text-purple rounded"
-              >
-                재검색
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleAddressSearch}
+              className="ml-2 w-w4 h-h2 border font-medium border-purple text-purple rounded"
+            >
+              재검색
+            </button>
           </div>
         ) : (
           <button

@@ -8,19 +8,19 @@ import {
   heart,
   logo,
   magnifyingGlass,
-  map
+  map,
 } from "../../assets/images";
 
 function Header() {
   const [auth, setAuth] = useRecoilState(authState);
-  const isLoggedIn = auth.isAuthenticated;
+  const isLoggedIn = !!auth.token;
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setAuth({
       isAuthenticated: false,
       token: null,
-      user: null
+      user: null,
     });
     localStorage.removeItem("authToken");
     navigate("/");
@@ -139,7 +139,7 @@ function Header() {
                     marginRight: "3rem",
                     borderColor: "#5E0080",
                     borderWidth: "1.8px",
-                    height: "48px"
+                    height: "48px",
                   }}
                 >
                   <input
@@ -159,7 +159,7 @@ function Header() {
                       style={{
                         width: "22px",
                         height: "22px",
-                        marginRight: "12px"
+                        marginRight: "12px",
                       }}
                     />
                   </button>

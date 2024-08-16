@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
 
+// API 주소 변수화
 const API_URL = "http://43.202.22.78:8080/";
 
 const Address = () => {
   const [addresses, setAddresses] = useState([]);
 
+  //백엔드
   useEffect(() => {
     const getData = async () => {
+      // 로그인 로직에서 로컬스토리지에 token을 authToken으로 저장함 = token을 authToken으로 변경
       const token = localStorage.getItem("authToken");
+
       if (!token) {
-        console.error("토큰이 없습니다.");
+        console.error("배송지 조회 토큰이 없습니다.");
         return;
       }
 
       try {
-        const response = await fetch(`${API_URL}mypage/address`, {
-          method: "GET",
-          headers: {
-            Token: token,
-          },
-        });
+        const response = await fetch(
+          // API 주소 변경
+          `${API_URL}mypage/address`,
+          {
+            method: "GET",
+            headers: {
+              Token: token,
+            },
+          }
+        );
         if (response.ok) {
           const userData = await response.json();
-          console.log(userData);
+          console.log("Fetched Addresses:", userData.data.address_list);
+          // 2. userData.userAddress를 API명세서에 맞게 userData.data.address_list.map(item => item.address)로 변경
           setAddresses(
             userData.data.address_list.map((item) => item.address) || []
           );
@@ -50,14 +59,15 @@ const Address = () => {
       new window.daum.Postcode({
         oncomplete: async (data) => {
           const fullAddress = data.roadAddress || data.jibunAddress;
-          const newAddresses = [...addresses, fullAddress];
-          setAddresses(newAddresses);
+          // 배송지 덮어쓰기가 아닌 추가이므로 newAddresses 삭제
+          // 배송지 저장 성공 후 useState반영하는 곳에 이동 setAddresses((prev) => [...prev,fullAddress]);
 
           const token = localStorage.getItem("authToken");
           if (!token) {
-            console.error("토큰이 없습니다.");
+            console.error("배송지 추가 토큰이 없습니다.");
             return;
           }
+
           try {
             const response = await fetch(`${API_URL}mypage/address`, {
               method: "POST",
@@ -65,16 +75,21 @@ const Address = () => {
                 "Content-Type": "application/json",
                 Token: token,
               },
+              // { address: newAddresses }를 { address: fullAddress }로 변경
               body: JSON.stringify({
-                address_list: newAddresses.map((address) => ({ address })),
+                address: fullAddress,
               }),
             });
 
+            // response.ok를 !response.ok로 변경 후 로직 수정
             if (!response.ok) {
               console.error("배송지 저장에 실패했습니다");
+            } else {
+              // 배송지 저장 성공 후 useState 반영
+              setAddresses((prev) => [...prev, fullAddress]);
             }
           } catch (error) {
-            console.error("배송지 저장 중 에러가 발생했습니다.:", error);
+            console.error("배송지 저장중 에러가 발생했습니다.:", error);
           }
         },
       }).open();
