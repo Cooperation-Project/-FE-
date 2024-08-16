@@ -166,7 +166,7 @@ const Info = () => {
               </div>
               <div className="flex-1 relative h-[48px]">
                 <input
-                  type="mobileNumber"
+                  type="tel"
                   className="text-sm w-full h-[46px] pt-0 pr-[11px] pb-[1px] pl-[15px] rounded border border-solid border-[#dddddd] font-normal text-[#333]"
                   value={userNumber}
                   onChange={(e) => setUserNumber(e.target.value)}
