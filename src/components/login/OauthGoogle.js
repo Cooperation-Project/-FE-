@@ -23,8 +23,7 @@ const OauthGoogle = () => {
       }
 
       const data = await res.json();
-      const userId = response.profileObj.email;
-      const user = { id: userId };
+      const user = data.user || { id: "unknown_user" }; // 백엔드에서 받은 사용자 정보 사용
 
       setAuth({
         isAuthenticated: true,
