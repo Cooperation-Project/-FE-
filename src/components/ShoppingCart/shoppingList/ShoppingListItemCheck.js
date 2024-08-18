@@ -1,5 +1,5 @@
 import React from "react";
-import { checked, unchecked } from "../../assets/icon";
+import { checked, unchecked } from "../../../assets/icon";
 
 const ShoppingListItemCheck = ({ isChecked, onCheckboxChange }) => {
   return (

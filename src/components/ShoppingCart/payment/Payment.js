@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { authState } from "../../../state/authAtom";
 import PaymentAddress from "./PaymentAddress";
 import PaymentAmount from "./PaymentAmount";
-import { AuthContext } from "../../context/AuthContext";
 
 const Payment = ({ cartDetails }) => {
-  const { auth } = useContext(AuthContext);
+  const auth = useRecoilValue(authState);
   const isLoggedIn = !!auth.token;
 
   const getOrderButton = () => {

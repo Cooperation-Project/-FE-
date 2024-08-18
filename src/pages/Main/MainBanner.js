@@ -8,10 +8,10 @@ import {
   mainBanner03,
   mainBanner04,
   mainBanner05,
-  mainBanner06,
+  mainBanner06
 } from "../../assets/images";
 
-//메인페이지의 메인배너 슬라이더 세팅
+// 메인페이지의 메인배너 슬라이더 세팅
 const sliderSettings = {
   dots: true,
   arrows: true,
@@ -34,7 +34,7 @@ const sliderSettings = {
   verticalSwiping: false,
   initialSlide: 0,
   cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
-  variableWidth: false,
+  variableWidth: false
 };
 
 const MainBanner = () => {
@@ -47,42 +47,42 @@ const MainBanner = () => {
             <img
               src={mainBanner01}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
           <div>
             <img
               src={mainBanner02}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
           <div>
             <img
               src={mainBanner03}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
           <div>
             <img
               src={mainBanner04}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
           <div>
             <img
               src={mainBanner05}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
           <div>
             <img
               src={mainBanner06}
               alt="컬리 이 주의 특가 한 눈에 보기"
-              className="w-full"
+              className="w-full h-[350px] object-cover"
             />
           </div>
         </Slider>

@@ -12,6 +12,14 @@
     }
   }
 
+.tab-button {
+  @apply bg-gray-200 text-gray-700 py-2 px-4 border border-gray-300 rounded cursor-pointer;
+}
+
+.tab-button.active {
+  @apply bg-white border-b-0;
+}
+
 
 @font-face {
   font-family: "NotoSansKR";

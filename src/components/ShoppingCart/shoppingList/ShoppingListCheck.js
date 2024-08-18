@@ -1,5 +1,5 @@
 import React from "react";
-import { checked, uncheckable, unchecked } from "../../assets/icon";
+import { checked, uncheckable, unchecked } from "../../../assets/icon";
 
 const ShoppingListCheck = ({
   allChecked,

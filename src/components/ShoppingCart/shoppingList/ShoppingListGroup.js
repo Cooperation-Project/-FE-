@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ShoppingListItem from "./ShoppingListItem";
-import { down, up } from "../../assets/icon";
+import { down, up } from "../../../assets/icon";
 
 const ShoppingListGroup = ({
   title,

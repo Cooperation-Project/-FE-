@@ -1,6 +1,6 @@
 import React from "react";
 import ShoppingListItemInfo from "./ShoppingListItemInfo";
-import { minusBlack, plus, deleted, minusGrey } from "../../assets/icon";
+import { minusBlack, plus, deleted, minusGrey } from "../../../assets/icon";
 import ShoppingListItemCheck from "./ShoppingListItemCheck";
 
 const ShoppingListItem = ({

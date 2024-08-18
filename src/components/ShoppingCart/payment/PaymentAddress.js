@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { location } from "../../assets/icon";
+import { location } from "../../../assets/icon";
 
 // Load Daum Postcode script dynamically
 const loadDaumPostcodeScript = (callback) => {

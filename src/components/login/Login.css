@@ -18,3 +18,40 @@ button {
   color: #4b0082;
   /* Indigo */
 }
+
+/* Login.css */
+
+.captcha-container {
+  background-color: #F7F7F7;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.captcha-header {
+  color: #666666;
+  font-size: 13px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.captcha-box {
+  background-color: #5f0080;
+  color: white;
+  font-size: 20px;
+  width: 71.39px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 10px auto;
+}
+
+.captcha-input {
+  width: 300px;
+  height: 46px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+}

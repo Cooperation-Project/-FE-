@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ShoppingListGroup from "./ShoppingListGroup";
 import ShoppingListCheck from "./ShoppingListCheck";
-import { sun, water } from "../../assets/icon";
-import { basilPesto, cookie, egg, peach } from "../../assets/item";
+import { sun, water } from "../../../assets/icon";
+import { basilPesto, cookie, egg, peach } from "../../../assets/item";
 
 const ShoppingList = ({ setCartDetails }) => {
   const [items, setItems] = useState([
